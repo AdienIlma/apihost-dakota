@@ -23,47 +23,10 @@ jobs:
       - name: Jalankan fetch
         run: python fetch_tabel.py
 
-      - name: Commit & push
+      - name: Commit dan push
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
           git add tabel_statistik.json
-          git diff --cached --quiet || git commit -m "Auto-update tabel statistik BPS $(date +'%Y-%m-%d')"
+          git diff --cached --quiet || git commit -m "Auto-update tabel statistik BPS"
           git push
-```
-
-Klik **"Commit changes"** → **"Commit directly to main"** → **"Commit changes"**
-
----
-
-### Step 4 — Jalankan Manual Pertama Kali
-
-1. Klik tab **"Actions"** di repo
-2. Di sidebar kiri klik **"Auto Update Tabel BPS"**
-3. Klik tombol **"Run workflow"** → **"Run workflow"** (warna hijau)
-4. Tunggu beberapa menit, refresh halaman
-5. Kalau muncul ✅ hijau → berhasil!
-6. Kalau muncul ❌ merah → klik untuk lihat log errornya, paste ke sini
-
----
-
-### Step 5 — Aktifkan GitHub Pages
-
-Supaya JSON bisa diakses lewat URL:
-
-1. Klik tab **"Settings"** di repo
-2. Di sidebar kiri klik **"Pages"**
-3. Di bagian **"Branch"** → pilih **"main"** → folder **"/ (root)"**
-4. Klik **"Save"**
-5. Tunggu 1-2 menit sampai muncul URL:
-```
-   https://bagas334.github.io/apihost_dakota/
-```
-
----
-
-### Step 6 — Test URL JSON
-
-Buka di browser:
-```
-https://bagas334.github.io/apihost_dakota/tabel_statistik.json
