@@ -16,7 +16,6 @@ print(f"Total {len(result)} tabel ditemukan.")
 all_detail = []
 for i, row in enumerate(result):
     table_id = row['table_id']
-    print(f"[{i+1}/{len(result)}] ID {table_id}: {row['title'][:50]}...")
     
     try:
         r = requests.get(BASE_API + str(table_id), timeout=15)
@@ -33,7 +32,7 @@ for i, row in enumerate(result):
                 "table": tabel_data.get('table', ''),
                 "excel": tabel_data.get('excel', ''),
             })
-            print(f"  ✅ OK")
+
         else:
             all_detail.append({
                 "table_id": str(table_id),
