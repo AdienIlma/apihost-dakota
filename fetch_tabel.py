@@ -6,13 +6,13 @@ import stadata
 API_KEY = "7d61b14ed6901581dda8958dac559433"
 BASE_API = f"https://webapi.bps.go.id/v1/api/view/domain/3471/model/statictable/lang/ind/key/{API_KEY}/id/"
 
-# Ambil list tabel
+# list tabel
 client = stadata.Client(API_KEY)
 tables = client.list_statictable(domain=['3471'])
 result = tables.to_dict(orient='records')
 print(f"Total {len(result)} tabel ditemukan.")
 
-# Ambil detail tiap tabel
+# detail tiap tabel
 all_detail = []
 for i, row in enumerate(result):
     table_id = row['table_id']
@@ -52,4 +52,4 @@ for i, row in enumerate(result):
 with open("tabel_statistik.json", "w", encoding="utf-8") as f:
     json.dump(all_detail, f, ensure_ascii=False, indent=2)
 
-print(f"\n✅ Selesai! {len(all_detail)} tabel disimpan.")
+print(f"\n {len(all_detail)} tabel disimpan.")
